@@ -102,7 +102,7 @@ app.post("/RegisterSensor", async (req, res) => {
   console.log("in addNewSensor router");
   const { Name, Cookis } = req.body
   console.log(`the Name of Sensor :${Name} , Cookis :${Cookis}`);
-
+  res.send(`the Name of Sensor :${Name} , Cookis :${Cookis}`)
   // this for get cookis 
   // let URL = 'https://learning.masterofthings.com/Login'
   // let data ='username=momenzakaria&password=MOMEN@@2016&DomainName=Training' 
