@@ -100,28 +100,31 @@ const jsonrequest = {
   
 app.post("/RegisterSensor", async (req, res) => {
   console.log("in addNewSensor router");
-  const { Name, Cookis } = req.body
+  const { Name } = req.body
   console.log(`the Name of Sensor :${Name} , Cookis :${Cookis}`);
-  res.send(`the Name of Sensor :${Name} , Cookis :${Cookis}`)
+  
   // this for get cookis 
-  // let URL = 'https://learning.masterofthings.com/Login'
-  // let data ='username=momenzakaria&password=MOMEN@@2016&DomainName=Training' 
-  // let config = {
-  //       headers: {
-  //         'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
-  //         }
-  //       }
-    // axios.post(URL, data, config)
-    // .then(function (response) {
-    //   let totalcookie =response.headers["set-cookie"][0];
-    //   let splitcookie =totalcookie.split(";")
-    //   let splitsplitcoo =splitcookie[0].split("=")
-    //       console.log(splitsplitcoo[1]);
-    //       res.send(response.headers["set-cookie"]) 
-    //   })
-    //   .catch(function (error) {
-    //       console.log(error);
-    //   });
+  let URL = 'https://learning.masterofthings.com/Login'
+  let data ='username=momenzakaria&password=MOMEN@@2016&DomainName=Training' 
+  let config = {
+        headers: {
+          'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'
+          }
+        }
+    axios.post(URL, data, config)
+    .then(function (response) {
+      let totalcookie =response.headers["set-cookie"][0];
+      console.log("==========>"+response.headers["set-cookie"]);
+      let splitcookie =totalcookie.split(";")
+      let splitsplitcoo =splitcookie[0].split("=")
+          console.log(`the Name of Sensor :${Name} , Cookis :${splitsplitcoo[1]}`);
+          // res.send(response.headers["set-cookie"]) 
+          res.send(`the Name of Sensor :${Name} , Cookis :${splitsplitcoo[1]}`)
+
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
 
 
 
