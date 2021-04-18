@@ -137,7 +137,7 @@ app.post("/RegisterConsSensor", async (req, res) => {
       let splitsplitcoo = splitcookie[0].split("=")
       // console.log(`the Name of Sensor :${Name} , Cookie :${splitsplitcoo[1]}`);
       // res.send(response.headers["set-cookie"]) 
-      let result = await CheckReadings(Name ,splitsplitcoo[1]);
+      let result = await CheckReadingsCONS(Name ,splitsplitcoo[1]);
       console.log(result);
       res.send({"sensorId":result});
       // res.send(`the Name of Sensor :${Name} , Cookie :${splitsplitcoo[1]}`)
@@ -146,7 +146,7 @@ app.post("/RegisterConsSensor", async (req, res) => {
       console.log(error);
     });
 })
-async function CheckReadings(Name,Cookie) {
+async function CheckReadingsCONS(Name,Cookie) {
   let addSen
   let URL = 'https://learning.masterofthings.com/CheckReadings'
   let config = {
