@@ -194,6 +194,7 @@ const jsontoAddMonitor ={
         }
     }
     let data =jsontoAddMonitor;
+    MonitorName = MonitorName+"-"+SensorID
     data.MonitorName = MonitorName;
     data.SensorId = SensorID ;
     data.ExtraParameter.SensorId =ConsolidatedID ;
