@@ -122,7 +122,7 @@ const jsontoAddSens = {
         let MonID = await AddMonitor(SenID ,ConsolidatedID , MonitorName,splitsplitcoo[1])
         console.log(SenID);
         console.log(MonID);
-        res.send({"sensorId":SenID,"sonitorId":MonID});
+        res.send({"sensorId":SenID,"monitorId":MonID});
 
       })
       .catch(function (error) {
@@ -175,15 +175,7 @@ const jsontoAddSens = {
       return sensorId ;
   }
 //**************************Add monitor*************************************** */
-const jsontoAddMonitor ={
-    "SensorId": "4390",
-    "ReadingName": "currentNearnessLevel",
-    "Value": "",
-    "Equality": "a",
-    "EventId": "9",
-    "MonitorName": "test55",
-    "ExtraParameter": "{\"Server\":\"\",\"Port\":\"\",\"DriverManagerId\":\"1\",\"DriverManagerPassword\":\"123\",\"SensorId\":\"4389\"}"
-}
+
   async function AddMonitor(SensorID ,ConsolidatedID , MonitorName,Cookie){
     let monitorId ;
      let URL = 'https://learning.masterofthings.com/AddMonitorEvents';
@@ -193,11 +185,19 @@ const jsontoAddMonitor ={
     'Cookie':'MOTSID ='+Cookie
         }
     }
+    const jsontoAddMonitor ={
+      "SensorId": "4390",
+      "ReadingName": "currentNearnessLevel",
+      "Value": "",
+      "Equality": "a",
+      "EventId": "9",
+      "MonitorName": "test55",
+      "ExtraParameter": JSON.stringify({"Server":"","Port":"","DriverManagerId":"1","DriverManagerPassword":"123","SensorId":ConsolidatedID})
+  }
     let data =jsontoAddMonitor;
     MonitorName = MonitorName+"-"+SensorID
     data.MonitorName = MonitorName;
     data.SensorId = SensorID ;
-    data.ExtraParameter.SensorId =ConsolidatedID ;
     let x = await axios.post(URL, data, config)
     .then(function (response) {
           monitorId = response.data.monitorId;
