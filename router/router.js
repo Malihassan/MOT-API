@@ -103,7 +103,7 @@ const jsontoAddSens = {
     const { Name , ConsolidatedID , MonitorName} = req.body
     // this for get cookis 
     let URL = 'https://learning.masterofthings.com/Login'
-    let data = 'username=momenzakaria&password=MOMEN@@2016&DomainName=Training'
+    let data = 'username=momenalhendawy&password=123456789&DomainName=Training'
     let config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
